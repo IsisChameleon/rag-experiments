@@ -1,0 +1,72 @@
+{
+  "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:dev-20-bullseye",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/turborepo-npm:1": {},
+    "ghcr.io/devcontainers-contrib/features/typescript:2": {},
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11",
+      "toolsToInstall": [
+        "flake8",
+        "black",
+        "mypy",
+        "poetry"
+      ]
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {}
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "README.md"
+      ]
+    },
+    "vscode": {
+      "extensions": [
+        "ms-vscode.typescript-language-features",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "ms-python.vscode-flake8",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "github.vscode-pull-request-github",
+        "eamodio.gitlens",
+        "davidanson.vscode-markdownlint",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "ms-toolsai.jupyter",
+        "amazonwebservices.aws-toolkit-vscode",
+        "sourcegraph.cody-ai"
+      ],
+      "settings": {
+        "[python]": {
+          "formatting.provider": "black",
+          "languageServer": "Pylance",
+          "analysis.typeCheckingMode": "basic",
+					// Here we state that we want Ruff to automatically format our code on save.
+					// You might hate this - you can delete it.
+					// Otherwise, it's a great way to enforce sensible and consistent
+					// formatting on your code.
+					"editor.codeActionsOnSave": {
+						"source.organizeImports": "always",
+						"source.fixAll": "explicit"
+					},
+					"editor.formatOnSave": true
+        }
+      }
+    }
+  },
+  "containerEnv": {
+    // https://python-poetry.org/docs/configuration/
+    "POETRY_VIRTUALENVS_IN_PROJECT": "true",
+    "POETRY_VIRTUALENVS_CREATE": "true",
+    "PYTHONPATH": "${PYTHONPATH}:${workspaceFolder}/backend",
+    "MINIKUBE_HOME": "/home/vscode/.minikube"
+  },
+  "forwardPorts": [
+    // 3000, # frontend
+    8000
+  ],
+  // This will run once after container is created
+  "postCreateCommand": "bash postCreateCommand.sh"
+}
