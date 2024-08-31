@@ -3,7 +3,7 @@ name = "rag-experiments-backend"
 version = "0.1.0"
 description = ""
 authors = ["Isabelle"]
-readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -14,6 +14,7 @@ llama-index-vector-stores-supabase = "^0.1.5"
 fastapi = "^0.112.0"
 dependency-injector = "^4.41.0"
 pyjwt = "^2.9.0"
+py-redis = "^1.1.1"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,4 +1,4 @@
-from application.events.event import Event
+from framework.events.event import Event
 
 
 class UserOAuthCompleted(Event):
@@ -9,5 +9,5 @@ class UserOAuthCompleted(Event):
     def __str__(self) -> str:
         return "UserOAuthCompleted for " + self.user_id + " with provider " + self.provider
     
-    def get_name(self) -> str:
-        return "UserOAuthCompleted"
+    # def get_name(self) -> str:
+    #     return "UserOAuthCompleted"
