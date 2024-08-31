@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from application.events.event import Event
+from framework.events.event import Event
 
 
 class EventBus(ABC):

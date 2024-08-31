@@ -1,5 +1,5 @@
-from application.events.event import Event
 from application.interfaces.event_bus import EventBus
+from framework.events.event import Event
 
 
 class InMemoryEventBus(EventBus):
